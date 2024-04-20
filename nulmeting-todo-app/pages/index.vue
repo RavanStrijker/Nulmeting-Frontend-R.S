@@ -2,9 +2,10 @@
   <div class="page-wrapper">
     <div class="element-wrapper">
       <div class="element-body">
-        <h1>Welkom bij de Levarne Nulmeting</h1>
-        <LevButton @clicked="increment">Count me! {{ cnt }}</LevButton>
+        <h1>Todo lijst</h1>
+        <LevButton @clicked="addTodo">Voeg een todo item toe</LevButton>
         <br>
+        <TodoTable></TodoTable>
         <br>
         <NuxtLink to="/about">Over ons</NuxtLink>
       </div>
@@ -13,9 +14,10 @@
 </template>
 
 <script setup lang="ts">
-const cnt = ref(0);
+import { useTodoStore } from '~/stores/todoStore';
+const todoStore = useTodoStore();
 
-function increment() {
-  cnt.value += 1;
+function addTodo() {
+  todoStore.addItem();
 }
 </script>
